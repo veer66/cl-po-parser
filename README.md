@@ -3,11 +3,28 @@
 
 cl-po-parser is a Common Lisp package for parsing a GNU Gettext po file.
 
-### Example
+### Usage example
 
 ```Lisp
 (ql:quickload :cl-po-parser)
 (cl-po-parser:parse-po-file #P"~/Develop/kde-l10n-th/messages/okular/okular.po")
+```
+
+### Parsing result
+
+```Lisp
+(
+;; ...
+(:M-TEXTUNIT (:COMMENT "#. +> trunk6 stable6")
+  (:COMMENT "#: part/videowidget.cpp:503") (:COMMENT "#, kde-format")
+  (:TEXTUNIT "msgstr" "หยุด")
+  (:TEXTUNIT "msgid" "Videos not supported in this okular"))
+ (:M-TEXTUNIT (:COMMENT "#. +> trunk6 stable6")
+  (:COMMENT "#: part/videowidget.cpp:507") (:COMMENT "#, kde-format")
+  (:TEXTUNIT "msgstr" "")
+  (:TEXTUNIT "msgid" "Videos not supported in this Okular"))
+;; ...
+)
 ```
 
 ## License
