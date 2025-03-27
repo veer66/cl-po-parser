@@ -45,5 +45,8 @@
 		       (push (jzon:parse msg-str) tu))
 		     (return-from proc-line)))
 
-		 (push (jzon:parse line) tu)))
+		 (push (jzon:parse line) tu))
+	       finally
+		  (when m-tu
+		    (push (cons :M-TEXTUNIT (reverse m-tu)) doc)))
       (reverse doc))))
