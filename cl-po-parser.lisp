@@ -29,6 +29,9 @@
 
 		 (when (blank-line-p line)
 		   (when m-tu
+		     (when tu
+		       (push (reverse tu) m-tu)
+		       (setq tu '()))
 		     (push (cons :M-TEXTUNIT (reverse m-tu)) doc)
 		     (setq m-tu '()))
 		   (return-from proc-line))
