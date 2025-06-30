@@ -35,3 +35,6 @@ This package is available on [Ultralisp](https://ultralisp.org/).
 
 APACHE-2.0
 
+## Todo
+
+* Handle every case mentioned in https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html
