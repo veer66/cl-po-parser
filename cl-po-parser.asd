@@ -2,7 +2,7 @@
 
 (asdf:defsystem #:cl-po-parser
   :description "A parser for a GNU Gettext po file"
-  :author "Vee Satayamas <vsatayamas@gmail.com>"
+  :author "Vee Satayamas <veerpub@pm.me>"
   :license  "APACHE-2.0"
   :version "0.0.1"
   :serial t
