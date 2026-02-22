@@ -25,7 +25,7 @@
             do
                (block proc-line
                  (when (comment-p line)
-                   (push (list :COMMENT line :LINE-NUMBER line-number) m-tu)
+                   (push (list :COMMENT line (cons :LINE-NUMBER line-number)) m-tu)
                    (return-from proc-line))
 
                  (when (blank-line-p line)
@@ -47,12 +47,12 @@
                        (push :TEXTUNIT tu)
                        (push msg-key tu)
                        (push (jzon:parse msg-str) tu)
-                       (push :LINE-NUMBER tu)
-                       (push line-number tu))
+                       (push (cons :LINE-NUMBER line-number) tu))
                      (return-from proc-line)))
 
-                 (push (jzon:parse line) tu))
-               finally
+                 (push (jzon:parse line) tu)
+                 (push (cons :LINE-NUMBER line-number) tu))
+            finally
                   (when m-tu
                     (push (cons :M-TEXTUNIT (reverse m-tu)) doc)))
       (reverse doc))))
