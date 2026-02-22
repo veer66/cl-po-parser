@@ -19,12 +19,13 @@
     (let ((doc '())
           (m-tu '())
           (tu '()))
-      (loop for line = (read-line f nil nil)
+      (loop for line-number from 1
+            for line = (read-line f nil nil)
             while line
             do
                (block proc-line
                  (when (comment-p line)
-                   (push (list :COMMENT line) m-tu)
+                   (push (list :COMMENT line :LINE-NUMBER line-number) m-tu)
                    (return-from proc-line))
 
                  (when (blank-line-p line)
@@ -45,7 +46,9 @@
                          (setq tu '()))
                        (push :TEXTUNIT tu)
                        (push msg-key tu)
-                       (push (jzon:parse msg-str) tu))
+                       (push (jzon:parse msg-str) tu)
+                       (push :LINE-NUMBER tu)
+                       (push line-number tu))
                      (return-from proc-line)))
 
                  (push (jzon:parse line) tu))
